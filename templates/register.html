@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - CareerLaunch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #243b80;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 9px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #243b80;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #243b80;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Create Account</h2>
+
+    <form method="POST" action="/register">
+
+        <input type="text" name="full_name"
+               placeholder="Full Name" required>
+
+        <input type="email" name="email"
+               placeholder="Email Address" required>
+
+        <input type="tel" name="phone"
+               placeholder="Phone Number" required>
+
+        <input type="password" name="password"
+               placeholder="Create Password" required>
+
+        <select name="qualification" required>
+            <option value="">Select Qualification</option>
+            <option value="12th">12th Pass</option>
+            <option value="Graduate">Graduate</option>
+            <option value="Post Graduate">Post Graduate</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button type="submit">Register Now</button>
+
+    </form>
+
+    <p>Already have an account?
+        <a href="/login">Login</a>
+    </p>
+</div>
+
+</body>
+</html>

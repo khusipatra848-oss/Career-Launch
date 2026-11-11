@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - CareerLaunch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #243b80;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #243b80;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #243b80;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome Back</h2>
+
+    <form method="POST" action="/login">
+
+        <input type="email" name="email"
+               placeholder="Email Address" required>
+
+        <input type="password" name="password"
+               placeholder="Password" required>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p>Don't have an account?
+        <a href="/register">Register</a>
+    </p>
+</div>
+
+</body>
+</html>

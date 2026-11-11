@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - CareerLaunch</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fc;
+        }
+
+        header {
+            background: #243b80;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .card h3 {
+            color: #243b80;
+        }
+
+        a {
+            text-decoration: none;
+            color: #243b80;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>CareerLaunch</h2>
+    <a href="/login" style="color:white;">Logout</a>
+</header>
+
+<div class="container">
+
+    <div class="welcome">
+        <h1>Welcome, {{ name }}!</h1>
+        <p>Your journey towards a successful career starts here.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Find Jobs</h3>
+            <p>Explore opportunities for freshers.</p>
+            <a href="/jobs">Explore Jobs →</a>
+        </div>
+
+        <div class="card">
+            <h3>My Applications</h3>
+            <p>Track your job applications.</p>
+            <a href="/applications">View Applications →</a>
+        </div>
+
+        <div class="card">
+            <h3>My Profile</h3>
+            <p>Manage your personal information.</p>
+            <a href="/profile">View Profile →</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
