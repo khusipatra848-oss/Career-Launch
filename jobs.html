@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Jobs | CareerLaunch</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #263445;
+        }
+
+        header {
+            background: #173b70;
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            font-size: 25px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: #173b70;
+        }
+
+        .heading p {
+            color: #68778a;
+        }
+
+        .search {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #d5dce7;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .jobs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+        }
+
+        .job-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            border: 1px solid #e7ebf1;
+        }
+
+        .job-card h3 {
+            color: #173b70;
+            margin-bottom: 12px;
+        }
+
+        .job-card p {
+            color: #68778a;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e8f1ff;
+            color: #245ba0;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+
+        .apply {
+            display: block;
+            background: #2463b5;
+            color: white;
+            text-align: center;
+            padding: 11px;
+            text-decoration: none;
+            border-radius: 7px;
+            margin-top: 15px;
+        }
+
+        .apply:hover {
+            background: #173b70;
+        }
+
+        #noResults {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        @media(max-width: 600px) {
+            .container {
+                width: 92%;
+            }
+
+            header {
+                padding: 18px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>CareerLaunch</h2>
+    <a href="/dashboard">← Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="heading">
+        <h1>Explore Job Opportunities</h1>
+        <p>Find the right career opportunity and start your journey.</p>
+    </div>
+
+    <input
+        type="text"
+        id="search"
+        class="search"
+        placeholder="Search jobs... Python, Developer, Data Analyst"
+        onkeyup="searchJobs()"
+    >
+
+    <div class="jobs" id="jobs">
+
+        <div class="job-card">
+            <h3>Junior Web Developer</h3>
+            <p>Company: Career Technologies</p>
+            <p>Location: Remote</p>
+            <span class="tag">Fresher</span>
+            <p>Salary: ₹2–4 LPA</p>
+            <form action="/apply" method="POST">
+    <input type="hidden" name="job_title" value="Junior Web Developer">
+    <input type="hidden" name="company" value="Career Technologies">
+    <button type="submit" class="apply">Apply Now</button>
+</form>
+        </div>
+
+        <div class="job-card">
+            <h3>Junior Software Developer</h3>
+            <p>Company: Tech Solutions</p>
+            <p>Location: Bengaluru</p>
+            <span class="tag">Entry Level</span>
+            <p>Salary: ₹3–5 LPA</p>
+            <form action="/apply" method="POST">
+    <input type="hidden" name="job_title" value="Junior Software Developer">
+    <input type="hidden" name="company" value="Tech Solutions">
+    <button type="submit" class="apply">Apply Now</button>
+</form>
+        </div>
+
+        <div class="job-card">
+            <h3>Python Developer</h3>
+            <p>Company: CodeWorks</p>
+            <p>Location: Remote</p>
+            <span class="tag">Fresher</span>
+            <p>Salary: ₹2.5–4 LPA</p>
+            <form action="/apply" method="POST">
+    <input type="hidden" name="job_title" value="Python Developer">
+    <input type="hidden" name="company" value="CodeWorks">
+    <button type="submit" class="apply">Apply Now</button>
+</form>
+        </div>
+
+        <div class="job-card">
+            <h3>Data Analyst</h3>
+            <p>Company: Data Insights</p>
+            <p>Location: Hyderabad</p>
+            <span class="tag">Entry Level</span>
+            <p>Salary: ₹3–5 LPA</p>
+            <form action="/apply" method="POST">
+    <input type="hidden" name="job_title" value="Data Analyst">
+    <input type="hidden" name="company" value="Data Insights">
+    <button type="submit" class="apply">Apply Now</button>
+</form>
+        </div>
+
+        <div class="job-card">
+            <h3>Frontend Developer</h3>
+            <p>Company: WebCraft</p>
+            <p>Location: Pune</p>
+            <span class="tag">Fresher</span>
+            <p>Salary: ₹2–4 LPA</p>
+            <form action="/apply" method="POST">
+    <input type="hidden" name="job_title" value="Frontend Developer">
+    <input type="hidden" name="company" value="WebCraft">
+    <button type="submit" class="apply">Apply Now</button>
+</form>
+        </div>
+
+        <div class="job-card">
+            <h3>Java Developer</h3>
+            <p>Company: Software Hub</p>
+            <p>Location: Chennai</p>
+            <span class="tag">Entry Level</span>
+            <p>Salary: ₹3–5 LPA</p>
+            <form action="/apply" method="POST">
+    <input type="hidden" name="job_title" value="Java Developer">
+    <input type="hidden" name="company" value="Software Hub">
+    <button type="submit" class="apply">Apply Now</button>
+</form>
+        </div>
+
+    </div>
+
+    <div id="noResults">
+        No matching jobs found.
+    </div>
+
+</div>
+
+<script>
+function searchJobs() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".job-card");
+    let count = 0;
+
+    cards.forEach(function(card) {
+        if (card.innerText.toLowerCase().includes(input)) {
+            card.style.display = "block";
+            count++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("noResults").style.display =
+        count === 0 ? "block" : "none";
+}
+</script>
+
+</body>
+</html>
