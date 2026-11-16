@@ -123,7 +123,38 @@ def jobs():
     if "user_id" not in session:
         return redirect("/login")
 
-    return render_template("jobs.html")
+    return render_template("jobs.html")# APPLY FOR JOB
+@app.route("/apply", methods=["POST"])
+def apply_job():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    job_title = request.form.get("job_title")
+    company = request.form.get("company")
+
+    try:
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor()
+
+        query = """
+        INSERT INTO applications (user_id, job_title, company)
+        VALUES (%s, %s, %s)
+        """
+
+        values = (session["user_id"], job_title, company)
+
+        cursor.execute(query, values)
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
+        return redirect("/jobs")
+
+    except mysql.connector.Error as error:
+        return f"Application Failed: {error}"
+    
 # RUN APPLICATION
 
 if __name__ == "__main__":
