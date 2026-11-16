@@ -117,7 +117,13 @@ def logout():
     session.clear()
     return redirect("/login")
 
+# FIND JOBS
+@app.route("/jobs")
+def jobs():
+    if "user_id" not in session:
+        return redirect("/login")
 
+    return render_template("jobs.html")
 # RUN APPLICATION
 
 if __name__ == "__main__":
