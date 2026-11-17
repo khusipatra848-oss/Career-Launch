@@ -123,7 +123,8 @@ def jobs():
     if "user_id" not in session:
         return redirect("/login")
 
-    return render_template("jobs.html")# APPLY FOR JOB
+    return render_template("jobs.html")
+  # APPLY FOR JOB
 @app.route("/apply", methods=["POST"])
 def apply_job():
 
@@ -154,7 +155,6 @@ def apply_job():
 
     except mysql.connector.Error as error:
         return f"Application Failed: {error}"
-    
 # RUN APPLICATION
 
 if __name__ == "__main__":
