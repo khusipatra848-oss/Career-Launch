@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - CareerLaunch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fc;
+            padding: 30px;
+        }
+        .profile {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px #ddd;
+        }
+        h1 { color: #243b80; }
+        p { padding: 12px; background: #f4f6fc; border-radius: 6px; }
+        a { color: #243b80; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="profile">
+        <h1>My Profile</h1>
+
+        <p><strong>Name:</strong> {{ user.full_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <p><strong>Qualification:</strong> {{ user.qualification }}</p>
+
+        <a href="/dashboard">← Back to Dashboard</a>
+    </div>
+</body>
+</html>
