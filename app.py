@@ -151,7 +151,7 @@ def apply_job():
         cursor.close()
         connection.close()
 
-        return redirect("/jobs")
+        return redirect("/application-success")
 
     except mysql.connector.Error as error:
         return f"Application Failed: {error}"
