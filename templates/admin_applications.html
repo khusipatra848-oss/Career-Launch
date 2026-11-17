@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Applications | CareerLaunch</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            color: #1e293b;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            padding: 22px 7%;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            float: right;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        .table-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 14px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        th {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .empty {
+            padding: 25px;
+            text-align: center;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <strong>CareerLaunch Admin</strong>
+    <a href="/admin">Back to Admin Dashboard</a>
+</header>
+
+<div class="container">
+
+    <h1>Job Applications</h1>
+
+    <div class="table-box">
+
+        {% if applications %}
+
+        <table>
+            <tr>
+                <th>Candidate</th>
+                <th>Email</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Apply Date</th>
+                <th>Status</th>
+            </tr>
+
+            {% for app in applications %}
+            <tr>
+                <td>{{ app.full_name }}</td>
+                <td>{{ app.email }}</td>
+                <td>{{ app.job_title }}</td>
+                <td>{{ app.company }}</td>
+                <td>{{ app.application_date }}</td>
+                <td>{{ app.status }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <div class="empty">
+            No applications found.
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
