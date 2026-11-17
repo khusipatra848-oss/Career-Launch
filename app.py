@@ -175,7 +175,37 @@ def application_success():
     <h1>Application Submitted Successfully!</h1>
     <a href="/jobs">Back to Jobs</a>
     """
-        
+  # MY APPLICATIONS
+@app.route("/my-applications")
+def my_applications():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    try:
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor(dictionary=True)
+
+        query = """
+        SELECT job_title, company, application_date, status
+        FROM applications
+        WHERE user_id = %s
+        ORDER BY application_date DESC
+        """
+
+        cursor.execute(query, (session["user_id"],))
+        applications = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+
+        return render_template(
+            "my_applications.html",
+            applications=applications
+        )
+
+    except mysql.connector.Error as error:
+        return f"Error: {error}"      
 # RUN APPLICATION
 
 if __name__ == "__main__":
