@@ -109,7 +109,33 @@ def dashboard():
         name=session["user_name"]
     )
 
+# MY PROFILE
+@app.route("/profile")
+def profile():
 
+    if "user_id" not in session:
+        return redirect("/login")
+
+    try:
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor(dictionary=True)
+
+        query = """
+        SELECT full_name, email, phone, qualification
+        FROM users
+        WHERE id = %s
+        """
+
+        cursor.execute(query, (session["user_id"],))
+        user = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+
+        return render_template("profile.html", user=user)
+
+    except mysql.connector.Error as error:
+        return f"Profile Error: {error}"
 # LOGOUT
 @app.route("/logout")
 def logout():
