@@ -154,7 +154,16 @@ def apply_job():
         return redirect("/application-success")
 
     except mysql.connector.Error as error:
-        return f"Application Failed: {error}"
+        return f"Application Failed: {error}"@app.route("/application-success")
+def application_success():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    return """
+    <h1>Application Submitted Successfully!</h1>
+    <a href="/jobs">Back to Jobs</a>
+    """
+        
 # RUN APPLICATION
 
 if __name__ == "__main__":
