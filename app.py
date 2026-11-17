@@ -85,7 +85,7 @@ def login():
 
                 session["user_id"] = user["id"]
                 session["user_name"] = user["full_name"]
-
+session["role"] = user["role"]
                 return redirect("/dashboard")
 
             else:
@@ -108,7 +108,17 @@ def dashboard():
         "dashboard.html",
         name=session["user_name"]
     )
+# ADMIN DASHBOARD
+@app.route("/admin")
+def admin_dashboard():
 
+    if "user_id" not in session:
+        return redirect("/login")
+
+    if session.get("role") != "admin":
+        return "Access Denied! Admin Only."
+
+    return render_template("admin.html")
 # MY PROFILE
 @app.route("/profile")
 def profile():
