@@ -192,7 +192,52 @@ def admin_users():
 
     except mysql.connector.Error as error:
         return f"Admin Users Error: {error}"
+# ADD NEW JOB
+@app.route("/admin/add-job", methods=["GET", "POST"])
+def add_job():
 
+    if "user_id" not in session:
+        return redirect("/login")
+
+    if session.get("role") != "admin":
+        return "Access Denied! Admin Only."
+
+    if request.method == "POST":
+
+        job_title = request.form.get("job_title")
+        company = request.form.get("company")
+        location = request.form.get("location")
+        salary = request.form.get("salary")
+        job_type = request.form.get("job_type")
+        description = request.form.get("description")
+
+        try:
+            connection = mysql.connector.connect(**db_config)
+            cursor = connection.cursor()
+
+            query = """
+            INSERT INTO jobs
+            (job_title, company, location, salary, job_type, description)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            """
+
+            values = (
+                job_title, company, location,
+                salary, job_type, description
+            )
+
+            cursor.execute(query, values)
+            connection.commit()
+
+            cursor.close()
+            connection.close()
+
+            return "Job Added Successfully!"
+
+        except mysql.connector.Error as error:
+            return f"Add Job Error: {error}"
+
+    return render_template("add_job.html")
 # MY PROFILE
 @app.route("/profile")
 def profile():
