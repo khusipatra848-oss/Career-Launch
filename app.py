@@ -271,14 +271,31 @@ def logout():
 
     session.clear()
     return redirect("/login")
-
 # FIND JOBS
 @app.route("/jobs")
 def jobs():
     if "user_id" not in session:
         return redirect("/login")
 
-    return render_template("jobs.html")
+    try:
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor(dictionary=True)
+
+        cursor.execute("""
+            SELECT id, job_title, company, location, salary, job_type, description
+            FROM jobs
+            ORDER BY created_at DESC
+        """)
+
+        jobs = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+
+        return render_template("jobs.html", jobs=jobs)
+
+    except mysql.connector.Error as error:
+        return f"Jobs Error: {error}"
   # APPLY FOR JOB
 @app.route("/apply", methods=["POST"])
 def apply_job():
