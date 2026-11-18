@@ -162,6 +162,37 @@ def admin_applications():
         return f"Admin Applications Error: {error}"
 
     
+# ADMIN USER MANAGEMENT
+@app.route("/admin/users")
+def admin_users():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    if session.get("role") != "admin":
+        return "Access Denied! Admin Only."
+
+    try:
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor(dictionary=True)
+
+        query = """
+        SELECT id, full_name, email, phone, qualification, role
+        FROM users
+        ORDER BY id DESC
+        """
+
+        cursor.execute(query)
+        users = cursor.fetchall()
+
+        cursor.close()
+        connection.close()
+
+        return render_template("admin_users.html", users=users)
+
+    except mysql.connector.Error as error:
+        return f"Admin Users Error: {error}"
+
 # MY PROFILE
 @app.route("/profile")
 def profile():
