@@ -287,14 +287,52 @@
 
     <div class="jobs" id="jobs">
 
-        <div class="job-card">
-            <div class="company-icon">C</div>
-            <h3>Junior Web Developer</h3>
-            <p class="company">Career Technologies</p>
-            <div class="details">
-                📍 Remote / India<br>
-                💼 Full Time
-            </div>
+    {% for job in jobs %}
+    <div class="job-card">
+
+        <div class="company-icon">
+            {{ job.job_title[0] | upper }}
+        </div>
+
+        <h3>{{ job.job_title }}</h3>
+        <p class="company">{{ job.company }}</p>
+
+        <div class="details">
+            📍 {{ job.location or 'Location not specified' }}<br>
+            💼 {{ job.job_type or 'Job type not specified' }}
+        </div>
+
+        <span class="tag">Fresher Friendly</span>
+
+        <p class="salary">
+            {{ job.salary or 'Salary not disclosed' }}
+        </p>
+
+        {% if job.description %}
+        <p class="details">{{ job.description }}</p>
+        {% endif %}
+
+        <form action="/apply" method="POST">
+            <input type="hidden" name="job_title"
+                   value="{{ job.job_title }}">
+            <input type="hidden" name="company"
+                   value="{{ job.company }}">
+            <button type="submit" class="apply">
+                Apply Now →
+            </button>
+        </form>
+
+    </div>
+    {% endfor %}
+
+    {% if not jobs %}
+    <div style="background:white; padding:25px; border-radius:12px; text-align:center;">
+        <h3>No jobs available yet.</h3>
+        <p>New opportunities will appear here soon.</p>
+    </div>
+    {% endif %}
+
+</div>
             <span class="tag">Fresher</span>
             <p class="salary">₹2–4 LPA</p>
             <form action="/apply" method="POST">
