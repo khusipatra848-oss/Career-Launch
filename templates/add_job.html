@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Job | CareerLaunch</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            padding: 30px 15px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #172554;
+        }
+
+        p {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 17px 0 8px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Add New Job</h1>
+    <p>Fill in the details below to publish a job listing.</p>
+
+    <form method="POST">
+
+        <label>Job Title</label>
+        <input type="text" name="job_title" placeholder="e.g. Python Developer" required>
+
+        <label>Company Name</label>
+        <input type="text" name="company" placeholder="e.g. Tech Solutions" required>
+
+        <label>Location</label>
+        <input type="text" name="location" placeholder="e.g. Bhubaneswar" required>
+
+        <label>Salary</label>
+        <input type="text" name="salary" placeholder="e.g. ₹3–5 LPA">
+
+        <label>Job Type</label>
+        <select name="job_type" required>
+            <option value="">Select job type</option>
+            <option>Full Time</option>
+            <option>Part Time</option>
+            <option>Internship</option>
+            <option>Remote</option>
+        </select>
+
+        <label>Job Description</label>
+        <textarea name="description" placeholder="Enter job responsibilities and requirements..." required></textarea>
+
+        <button type="submit">Publish Job</button>
+
+    </form>
+
+    <a href="/admin" class="back">← Back to Admin Dashboard</a>
+
+</div>
+
+</body>
+</html>
